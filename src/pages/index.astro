@@ -1,17 +1,561 @@
 ---
+const roles = [
+  {
+    id: "frontend-lead",
+    title: "Frontend Lead",
+    location: "Tarkwa / Remote-friendly",
+    type: "Full-time",
+    tags: ["TypeScript", "React", "React Native", "UI/UX"],
+    hook: "Own everything the user sees and touches, from component architecture and state management to making sure the interface makes sense to the person using it.",
+    details: [
+      "Own the frontend codebase, the component architecture, how state is managed, and how errors are communicated to users",
+      "Make structural decisions about how UI is built across the product",
+      "Hold the line on interface quality when there is pressure to just ship",
+      "Work without a dedicated designer. You need enough sensibility to make layout and interaction decisions independently.",
+    ],
+    fit: [
+      "Your JavaScript fundamentals are solid",
+      "You have looked at something you built and felt uncomfortable because it was unclear to use",
+      "You think about what a user believes is happening, not just what is actually happening",
+      "You notice good and bad interfaces in the wild and have opinions about why",
+      "Design is something you are developing or genuinely want to, not something to hand off",
+    ],
+  },
+  {
+    id: "backend-lead",
+    title: "Backend Lead",
+    location: "Tarkwa / Remote-friendly",
+    type: "Full-time",
+    tags: ["Node.js/Deno", "PostgreSQL", "PostGIS", "API Design", "Go"],
+    hook: "Own the data layer and the core API - the schema, the write paths, the queries, and everything between them.",
+    details: [
+      "Design and review anything that touches the database",
+      "Own the API contracts that the frontend and external clients depend on",
+      "Be the person who catches data integrity issues before they become incidents",
+      "Think about what happens when a transaction fails halfway, when two requests hit the same record, or when the database slows under load",
+    ],
+    fit: [
+      "You think carefully about schema design before writing a single migration",
+      "You have dealt with a real backend problem in production and came out knowing more",
+      "Correctness matters to you more than cleverness",
+      "You have debugged a real data issue and came out with a runbook, not just a fix",
+      "You are uncomfortable shipping something you cannot monitor",
+    ],
+  },
+  {
+    id: "systems-engineer",
+    title: "Systems & Fullstack Engineer",
+    location: "Tarkwa / Remote-friendly",
+    type: "Full-time",
+    tags: ["TypeScript", "React", "Node.js/Deno", "Docker", "CI/CD", "Go"],
+    hook: "Work across the stack and own how the system runs - deployments, pipelines, infrastructure, and security.",
+    details: [
+      "Work across frontend, backend, and infrastructure wherever the work needs you",
+      "Own deployments, CI pipelines, Docker configuration, and making sure things do not silently break",
+      "Share security responsibility directly with the CTO - not a separate concern, part of how you build",
+      "Grow toward understanding how the whole system fits together: internal tooling, infrastructure decisions, architectural trade-offs",
+    ],
+    fit: [
+      "You are comfortable picking up whatever layer the work requires without needing a defined lane",
+      "Deployment and infrastructure questions interest you rather than intimidate you",
+      "You notice the things that are not explicitly anyones responsibility and pick them up anyway",
+      "You want to eventually understand the whole system, not just the parts you built",
+    ],
+  },
+];
 
+const principles = [
+  { title: "Small ships, fast turns", desc: "We keep teams small so everyones work matters. No layers between you and impact." },
+  { title: "Empathy first", desc: "We design for real people in real contexts - low-bandwidth, mid-range phones, Ghanaian infrastructure." },
+  { title: "Reliability by default", desc: "Stable, predictable systems our users can trust. We do not ship things we would not rely on ourselves." },
+  { title: "Say no to the wrong things", desc: "We decline work that does not match our mission. Focus is a decision you make every day." },
+  { title: "Ship early, iterate", desc: "Simplify, ship, learn, improve. Perfectionism is the enemy of progress." },
+  { title: "Know what good looks like", desc: "We have taste and standards. We know when something is right and when it isnt." },
+  { title: "Build things that last", desc: "Put care into the foundation. Do not leave it for future-us to fix." },
+  { title: "Long-term over quick wins", desc: "We build partnerships, not transactions. Sustainable pace, durable decisions." },
+];
+
+const team = [
+  { initials: "MA", name: "Mark Agyemang", role: "CEO & Co-founder, UI/UX", before: "Product designer and UI/UX specialist. Sets the product vision and owns every pixel that ships." },
+  { initials: "HA", name: "Harrison Ankah", role: "Co-founder & PM, OrctaGo", before: "Software and hardware engineer turned product lead. Runs OrctaGo (go.orctatech.com) end to end." },
+  { initials: "BR", name: "Bright", role: "Embedded Systems Lead", before: "Owns our IoT and hardware stack. Designs and deploys embedded systems for real-world environments." },
+  { initials: "BK", name: "Bernard Katamanso", role: "CTO", before: "Architects the platform and infrastructure. Deep experience building developer tooling for teams across Africa." },
+];
+
+const processSteps = [
+  { day: "1", title: "Apply", desc: "Fill out a short form. No cover letter needed. Link us to something you have built.", duration: "5 min" },
+  { day: "1\u20132", title: "Human review", desc: "A real person reads your application. Everyone gets a reply within 24 hours.", duration: "24 hrs" },
+  { day: "2\u20133", title: "Casual chat", desc: "30-minute conversation. No whiteboarding. No algorithm puzzles. We talk about what you build and what we are working on.", duration: "30 min" },
+  { day: "3\u20135", title: "Practical session", desc: "90-minute collaborative problem-solving session on a real Orcta problem. Not a take-home, not a test.", duration: "90 min" },
+  { day: "5-7", title: "Offer", desc: "Decision within 48 hours. No exploding offers. We want you to feel good about saying yes.", duration: "-" },
+];
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers - Orcta Technologies</title>
+    <meta name="description" content="Build technology that respects people. Orcta is hiring engineers and builders in Ghana." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a href="https://orctatech.com" class="logo">
+          <img src="/images/logo.svg" alt="Orcta" height="28" width="120" />
+        </a>
+        <div class="nav-links">
+          <a href="https://orctatech.com">Home</a>
+          <a href="https://orctatech.com/about">About</a>
+          <a href="https://orctatech.com/products">Products</a>
+          <a href="#roles" class="btn-primary">Open Roles</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Build Technology<br />That Respects People.</h1>
+        <p class="hero-subtitle">
+          We are a small Ghana-based team building software, hardware, and AI that works for real people.
+          Bootstrapped since 2019. Growing. Looking for builders who care about craft and context.
+        </p>
+        <div class="hero-actions">
+          <a href="#roles" class="btn-primary">See Open Roles</a>
+          <a href="#process" class="btn-secondary">How We Hire</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission">
+      <div class="section-inner">
+        <h2>We exist to bridge innovation and humanity.</h2>
+        <p class="mission-text">
+          Orcta transforms complex challenges into reliable, well-designed products that serve real users
+          and evolve with purpose. Every decision is guided by empathy, technical clarity, and long-term thinking.
+          We design and engineer thoughtful digital and embedded systems that balance performance, reliability,
+          and human experience.
+        </p>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+      <div class="section-inner">
+        <h2>Technology should understand people,<br />not the other way around.</h2>
+        <div class="values-list">
+          <div class="value-item">
+            <h3>Empathy First</h3>
+            <p>Design and build for real people in real contexts. Every product starts with user context, not a specification.</p>
+          </div>
+          <div class="value-item">
+            <h3>We Ship Real Things</h3>
+            <p>From Orcta Go real-time dispatch to IoT sensors in cold storage. We ship working systems, not slides.</p>
+          </div>
+          <div class="value-item">
+            <h3>Think Long-Term</h3>
+            <p>We decline work that does not match our mission. Bootstrapped means we focus on what matters and build to last.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section id="principles" class="principles">
+      <div class="section-inner">
+        <h2>How we work.</h2>
+        <div class="principles-list">
+          {principles.map((p) => (
+            <div class="principle-item">
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+      <div class="section-inner">
+        <h2>The people you would work with.</h2>
+        <p class="team-intro">Every one of us came to Orcta from a different path.</p>
+        <div class="team-list">
+          {team.map((member) => (
+            <div class="team-item">
+              <span class="team-initials">{member.initials}</span>
+              <div class="team-heading">
+                <h3>{member.name}</h3>
+                <span class="team-role">{member.role}</span>
+              </div>
+              <p class="team-story">{member.before}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles -->
+    <section id="roles" class="roles">
+      <div class="section-inner">
+        <h2>Open roles</h2>
+        <p class="roles-intro">Three roles. Each one carries real ownership from day one. We are looking for people who care about what they build and how it works for the person using it.</p>
+        <div class="roles-list">
+          {roles.map((role) => (
+            <details class="role-item">
+              <summary>
+                <div class="role-header">
+                  <div>
+                    <h3>{role.title}</h3>
+                    <div class="role-tags">
+                      {role.tags.map((tag) => <span class="tag">{tag}</span>)}
+                    </div>
+                  </div>
+                  <div class="role-meta">
+                    <span>{role.location}</span>
+                    <span>{role.type}</span>
+                  </div>
+                </div>
+                <p class="role-hook">{role.hook}</p>
+              </summary>
+              <div class="role-body">
+                <div class="role-section">
+                  <h4>What you will do day to day</h4>
+                  <ul>
+                    {role.details.map((d) => <li>{d}</li>)}
+                  </ul>
+                </div>
+                <div class="role-section">
+                  <h4>You are probably a fit if</h4>
+                  <ul>
+                    {role.fit.map((f) => <li>{f}</li>)}
+                  </ul>
+                </div>
+                <div class="role-apply">
+                  <div>
+                    <p>Send a short email to <strong>engineering@orctatech.com</strong> with subject <strong>{role.title} - [Your Name]</strong>. Tell us who you are, what you have built, and why this role specifically. No CV required.</p>
+                  </div>
+                  <a href={`mailto:engineering@orctatech.com?subject=${encodeURIComponent(role.title)} - [Your Name]`} class="btn-primary">Apply for this role</a>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Hire -->
+    <section id="process" class="process">
+      <div class="section-inner">
+        <h2>Transparent, fast, and humane.</h2>
+        <p class="process-intro">No ghosting. No LeetCode. No take-home assignments that take 10 hours. Every candidate gets a reply within 48 hours. We evaluate what you can build, not where you learned to build it.</p>
+        <div class="process-list">
+          {processSteps.map((step, i) => (
+            <div class="process-step">
+              <div class="step-marker">{step.day}</div>
+              <div class="step-content">
+                <div class="step-header">
+                  <h3>{step.title}</h3>
+                  <span class="step-duration">{step.duration}</span>
+                </div>
+                <p>{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="process-total">Within 7 days from application to offer.</p>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+      <div class="section-inner">
+        <h2>Proudly based in Ghana.</h2>
+        <div class="benefits-content">
+          <p>We are based in Tarkwa, Western Region, with remote-friendly flexibility. Most of the team works from Tarkwa, Accra, or wherever in Ghana they are most effective.</p>
+        </div>
+        <div class="benefits-list">
+          <div class="benefit-item">Competitive salary in GHS</div>
+          <div class="benefit-item">Health insurance</div>
+          <div class="benefit-item">Equipment stipend</div>
+          <div class="benefit-item">Internet allowance</div>
+          <div class="benefit-item">20 days paid annual leave</div>
+          <div class="benefit-item">Annual learning budget</div>
+          <div class="benefit-item">You ship real work, not Jira tickets</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speculative -->
+    <section class="speculative">
+      <div class="section-inner">
+        <h2>Not seeing the right role?</h2>
+        <p>We are always open to meeting great people who think they would add something to Orcta.</p>
+        <a href="mailto:engineering@orctatech.com" class="btn-primary">engineering@orctatech.com</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="section-inner">
+        <div class="footer-inner">
+          <img src="/images/logo.svg" alt="Orcta" height="22" width="90" class="footer-logo" />
+          <div class="footer-links">
+            <a href="https://orctatech.com">Home</a>
+            <a href="https://orctatech.com/about">About</a>
+            <a href="https://orctatech.com/products">Products</a>
+            <a href="https://orctatech.com/contact">Contact</a>
+          </div>
+          <div class="footer-bottom">
+            <span>Tarkwa, Western Region, Ghana</span>
+            <span>&copy; {new Date().getFullYear()} Orcta Technologies</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style is:global>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #0e0e0e;
+        background: #ffffff;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, h4 { font-family: 'Manrope', system-ui, sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+      h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+        margin-bottom: 1.5rem;
+      }
+      p { color: #4a4a4a; }
+      .section-inner { max-width: 770px; margin: 0 auto; padding: 0 1.5rem; }
+      section { padding: 5rem 0; }
+      section + section { border-top: 1px solid #e8e8e8; }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #ffffff;
+        z-index: 100;
+      }
+      .nav-inner {
+        max-width: 770px;
+        margin: 0 auto;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo img { height: 28px; width: auto; display: block; }
+      .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+      .nav-links a { text-decoration: none; font-size: 0.875rem; color: #4a4a4a; }
+      .nav-links a:hover { color: #0e0e0e; }
+      .nav-links .btn-primary { font-size: 0.8125rem; padding: 0.45rem 1rem; }
+
+      /* Buttons */
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        background: #0e0e0e;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: background 0.15s;
+      }
+      .btn-primary:hover { background: #2a2a2a; }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        color: #0e0e0e;
+        text-decoration: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 0.875rem;
+        border: 1px solid #d2d2d2;
+        transition: border-color 0.15s;
+      }
+      .btn-secondary:hover { border-color: #0e0e0e; }
+
+      /* Hero */
+      .hero {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 0 4rem;
+        border-top: none !important;
+      }
+      .hero-content { max-width: 770px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+      .hero h1 {
+        font-size: clamp(2.25rem, 6vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 1.5rem;
+      }
+      .hero-subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        line-height: 1.7;
+        max-width: 540px;
+        margin-bottom: 2rem;
+      }
+      .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+      /* Mission */
+      .mission-text { font-size: 1.05rem; line-height: 1.8; max-width: 580px; }
+
+      /* Values */
+      .values-list { display: flex; flex-direction: column; gap: 2rem; }
+      .value-item { }
+      .value-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+      .value-item p { font-size: 0.95rem; line-height: 1.6; max-width: 520px; }
+
+      /* Principles */
+      .principles-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; }
+      .principle-item { }
+      .principle-item h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+      .principle-item p { font-size: 0.9rem; line-height: 1.6; }
+
+      /* Team */
+      .team-intro { margin-bottom: 2.5rem; }
+      .team-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+      .team-item { display: flex; flex-direction: column; gap: 0.6rem; }
+      .team-initials {
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #3D4AF6;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .team-heading h3 { font-size: 1rem; }
+      .team-role { font-size: 0.8rem; color: #878787; display: block; margin-top: 0.05rem; }
+      .team-story {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: #4a4a4a;
+        border-left: 1px solid #3D4AF6;
+        padding-left: 1rem;
+        margin-top: 0.15rem;
+      }
+
+      /* Roles */
+      .roles-intro { margin-bottom: 2rem; }
+      .roles-list { display: flex; flex-direction: column; }
+      .role-item {
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .role-item:first-child { border-top: 1px solid #e8e8e8; }
+      .role-item summary {
+        cursor: pointer;
+        padding: 1.25rem 0;
+        list-style: none;
+      }
+      .role-item summary::-webkit-details-marker { display: none; }
+      .role-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .role-header h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+      .role-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+      .tag {
+        font-size: 0.75rem;
+        color: #878787;
+      }
+      .tag + .tag::before { content: "\00B7"; margin-right: 0.375rem; }
+      .role-meta { text-align: right; flex-shrink: 0; font-size: 0.85rem; color: #878787; }
+      .role-meta span { display: block; }
+      .role-hook { margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6; max-width: 560px; }
+      .role-body { padding-bottom: 1.5rem; }
+      .role-section { margin-bottom: 1.25rem; }
+      .role-section h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: #0e0e0e; }
+      .role-section ul { padding-left: 1.2rem; }
+      .role-section li { font-size: 0.875rem; color: #4a4a4a; margin-bottom: 0.3rem; line-height: 1.5; }
+      .role-apply { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid #e8e8e8; }
+      .role-apply p { font-size: 0.85rem; }
+
+      /* Process */
+      .process-intro { margin-bottom: 2.5rem; }
+      .process-list { }
+      .process-step {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .process-step:first-child { border-top: 1px solid #e8e8e8; }
+      .step-marker {
+        width: 2rem;
+        font-family: 'Manrope', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #878787;
+        flex-shrink: 0;
+        padding-top: 0.1rem;
+      }
+      .step-content { flex: 1; }
+      .step-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.15rem; }
+      .step-header h3 { font-size: 0.95rem; }
+      .step-duration { font-size: 0.75rem; color: #878787; }
+      .step-content p { font-size: 0.875rem; line-height: 1.5; max-width: 520px; }
+      .process-total { margin-top: 1rem; font-size: 0.9rem; font-weight: 500; }
+
+      /* Benefits */
+      .benefits-content p { margin-bottom: 1.5rem; }
+      .benefits-list { display: flex; flex-direction: column; gap: 0.4rem; }
+      .benefit-item { font-size: 0.9rem; }
+
+      /* Speculative */
+      .speculative { text-align: center; }
+      .speculative h2 { margin-bottom: 0.75rem; }
+      .speculative p { margin-bottom: 1.5rem; }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid #e8e8e8;
+        padding: 2.5rem 0;
+      }
+      .footer-inner { display: flex; flex-direction: column; gap: 1rem; }
+      .footer-logo { display: block; opacity: 0.3; }
+      .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+      .footer-links a { color: #878787; text-decoration: none; font-size: 0.85rem; }
+      .footer-links a:hover { color: #0e0e0e; }
+      .footer-bottom { display: flex; justify-content: space-between; font-size: 0.8rem; color: #b0b0b0; }
+
+      @media (max-width: 600px) {
+        section { padding: 3rem 0; }
+        .nav-links a:not(.btn-primary) { display: none; }
+        .principles-list { grid-template-columns: 1fr; gap: 1.5rem; }
+        .team-list { grid-template-columns: 1fr; gap: 2rem; }
+        .role-header { flex-direction: column; }
+        .role-meta { text-align: left; }
+        .role-meta span { display: inline; }
+        .role-meta span + span::before { content: " \00B7 "; }
+        .role-apply { flex-direction: column; align-items: flex-start; }
+        .footer-bottom { flex-direction: column; gap: 0.25rem; }
+      }
+    </style>
+  </body>
 </html>
