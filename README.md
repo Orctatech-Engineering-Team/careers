@@ -8,5 +8,3 @@ pnpm dev       # local dev at localhost:4321
 pnpm build     # static output to ./dist/
 pnpm preview   # preview the build
 ```
-
-Push to `master` on GitHub — Vercel auto-deploys.

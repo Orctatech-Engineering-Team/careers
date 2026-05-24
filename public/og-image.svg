@@ -64,11 +64,10 @@
 
   <use href="#logo" transform="translate(60, 45) scale(0.12)"/>
 
-  <text x="60" y="205" font-size="80" font-weight="800" fill="#ffffff" letter-spacing="-2">Orcta Technologies</text>
-  <text x="60" y="305" font-size="60" font-weight="700" fill="#757575" letter-spacing="-1.5">Careers</text>
-  <text x="60" y="400" font-size="32" font-weight="400" fill="#4a4a4a">Build Technology That Respects People.</text>
+  <text x="60" y="250" font-size="100" font-weight="800" fill="#ffffff" letter-spacing="-2">Orcta Technologies</text>
+  <text x="70" y="325" font-size="60" font-weight="700" fill="#757575" letter-spacing="">Careers</text>
+  <text x="60" y="435" font-size="28" font-weight="400" fill="#4a4a4a">Build Technology That Respects People.</text>
 
   <line x1="60" y1="460" x2="500" y2="460" stroke="#2a2a2a" stroke-width="1.5"/>
 
-  <text x="60" y="560" font-size="18" font-weight="500" fill="#4a4a4a">Tarkwa, Ghana - Remote-friendly</text>
 </svg>
