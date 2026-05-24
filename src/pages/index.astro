@@ -480,8 +480,23 @@ const processSteps = [
         cursor: pointer;
         padding: 1.25rem 0;
         list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.75rem;
       }
       .role-item summary::-webkit-details-marker { display: none; }
+      .role-item summary::after {
+        content: "+";
+        font-family: var(--font-family);
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        line-height: 1.4;
+        flex-shrink: 0;
+        transition: transform 0.15s;
+      }
+      .role-item[open] summary::after { content: "\2212"; }
       .role-header {
         display: flex;
         align-items: flex-start;
